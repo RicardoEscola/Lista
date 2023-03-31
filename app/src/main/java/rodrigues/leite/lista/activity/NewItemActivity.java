@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -45,6 +46,25 @@ public class NewItemActivity extends AppCompatActivity {
                     Toast.makeText(NewItemActivity.this, "É necessário selecionar uma imagem!",Toast.LENGTH_LONG).show();
                     return;
                 }
+                EditText etTitle = findViewById(R.id.etTitle);
+                String title = etTitle.getText().toString();
+                if(title.isEmpty()){
+                    Toast.makeText(NewItemActivity.this,"É necessário inserir um titulo",Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                EditText etDesc = findViewById(R.id.etDesc);
+                String desc = etDesc.getText().toString();
+                if(desc.isEmpty()){
+                    Toast.makeText(NewItemActivity.this,"É necessário inserir uma descrição",Toast.LENGTH_LONG).show();
+                    return;
+                }
+                Intent i = new Intent();
+                i.setData(photoSelected);
+                i.putExtra("title",title);
+                i.putExtra("desc",desc);
+                setResult(Activity.RESULT_OK,i);
+                finish();
             }
         });
     }
