@@ -54,15 +54,15 @@ public class NewItemActivity extends AppCompatActivity {
                 }
 
                 EditText etDesc = findViewById(R.id.etDesc);
-                String desc = etDesc.getText().toString();
-                if(desc.isEmpty()){
+                String description = etDesc.getText().toString();
+                if(description.isEmpty()){
                     Toast.makeText(NewItemActivity.this,"É necessário inserir uma descrição",Toast.LENGTH_LONG).show();
                     return;
                 }
                 Intent i = new Intent();
                 i.setData(photoSelected);
                 i.putExtra("title",title);
-                i.putExtra("desc",desc);
+                i.putExtra("description",description);
                 setResult(Activity.RESULT_OK,i);
                 finish();
             }
