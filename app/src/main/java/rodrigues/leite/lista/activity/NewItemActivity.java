@@ -73,7 +73,8 @@ public class NewItemActivity extends AppCompatActivity {
         if(requestCode == PHOTO_PICKER_REQUEST){
             if (resultCode == Activity.RESULT_OK){
                 photoSelected = data.getData();
-                ImageView imvfotoPreview = findViewById(R.id.photoSelected);
+                ImageView imvfotoPreview = findViewById(R.id.imvPhotoPreview);
+                imvfotoPreview.setImageURI(photoSelected);
             }
         }
     }
