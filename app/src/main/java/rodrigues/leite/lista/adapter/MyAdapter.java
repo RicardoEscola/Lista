@@ -35,10 +35,13 @@ public class MyAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        MyItem myItem = itens.get(position);
-        View v = holder.itemView;
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) { //Parametros 1° os intens criados na onCreateViewHolder e 2° qual o item deve ser usado para preencher o item
+        // onBindViewHolder preenche a UI com os dados de item
 
+        MyItem myItem = itens.get(position); //pegamos o item
+        View v = holder.itemView; //pegamos o view que está dento de viwholder
+
+        //Preenchendo os dados da UI com os dados do item
         ImageView imvfoto = v.findViewById(R.id.imvPhoto);
         imvfoto.setImageURI(myItem.photo);
 

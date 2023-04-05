@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Passo 15------------------------------------------------------------------------------------------------------------------------
+        //Passo 12------------------------------------------------------------------------------------------------------------------------
         RecyclerView rvItens = findViewById(R.id.rvItens);
 
         myAdapter = new MyAdapter(this,itens);
