@@ -26,9 +26,11 @@ public class MyAdapter extends RecyclerView.Adapter {
 
     @NonNull
     @Override
+    //Passo 12 ---------------------------------------------------------------------------------------------
+
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(mainActivity);
-        View v = inflater.inflate(R.layout.item_list,parent, false);
+        LayoutInflater inflater = LayoutInflater.from(mainActivity); // Lê o arquivo xml então cria os itens
+        View v = inflater.inflate(R.layout.item_list,parent, false); //Cria os elementos pegando eles da lista
         return new MyViewHolder(v);
     }
 
@@ -38,7 +40,7 @@ public class MyAdapter extends RecyclerView.Adapter {
         View v = holder.itemView;
 
         ImageView imvfoto = v.findViewById(R.id.imvPhoto);
-        imvfoto.setImageBitmap(myItem.photo);
+        imvfoto.setImageURI(myItem.photo);
 
         TextView tvTitle = v.findViewById(R.id.tvTitle);
         tvTitle.setText(myItem.title);
