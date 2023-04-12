@@ -29,16 +29,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Passo 12------------------------------------------------------------------------------------------------------------------------
-        RecyclerView rvItens = findViewById(R.id.rvItens);
+        RecyclerView rvItens = findViewById(R.id.rvItens);// Pegando a grid
 
-        myAdapter = new MyAdapter(this,itens);
-        rvItens.setAdapter(myAdapter);
+        myAdapter = new MyAdapter(this,itens); //Cria o myadapter
+        rvItens.setAdapter(myAdapter); //seta o myadapter no recycleview
 
-        rvItens .setHasFixedSize(true);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        rvItens.setLayoutManager(layoutManager);
+        rvItens .setHasFixedSize(true); // fala que todos os itens devem ter o mesmo tamanho
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this); //cria um gerenciador de layout linear
+        rvItens.setLayoutManager(layoutManager); //seta o recycleview no gerenciador
 
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rvItens.getContext(),DividerItemDecoration.VERTICAL);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rvItens.getContext(),DividerItemDecoration.VERTICAL); //Cria uma linha para separar os itens
+
+        rvItens.addItemDecoration(dividerItemDecoration);
         //---------------------------------------------------------------------------------------------------------------------------------
 
         // Passo 07--------------------------------------------------------------------------------------------------------------------------
@@ -64,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 myItem.photo = data.getData();
 
                 itens.add(myItem); // guardamos os itens na lista de itens
-                myAdapter.notifyItemInserted(itens.size()-1);
+                myAdapter.notifyItemInserted(itens.size()-1); //atualiza a recycleview e exiba o novo item
             }
         }
     }

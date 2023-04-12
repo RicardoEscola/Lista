@@ -45,7 +45,7 @@ public class NewItemActivity extends AppCompatActivity {
             @Override
             // Passo 09 -------------------------------------------------------------------------------------------------------------
             public void onClick(View view) {
-                if(photoSelected == null){ // analizando se os campos foram preenchidos
+                if(photoSelected == null){ // Analizando se os campos foram preenchidos e se caso algo esteja nulo dá uma mensagem falando oq faltou
                     Toast.makeText(NewItemActivity.this, "É necessário selecionar uma imagem!",Toast.LENGTH_LONG).show();
                     return;
                 }
@@ -62,13 +62,13 @@ public class NewItemActivity extends AppCompatActivity {
                     Toast.makeText(NewItemActivity.this,"É necessário inserir uma descrição",Toast.LENGTH_LONG).show();
                     return;
                 }
-                //Guarda os dados acima e manda pra main
+                //Guarda os dados preenchidos e manda pra main
                 Intent i = new Intent();
                 i.setData(photoSelected);
                 i.putExtra("title",title);
                 i.putExtra("description",description);
                 setResult(Activity.RESULT_OK,i); //falando que está tudo certinho e volta pra main
-                finish();
+                finish(); //finaliza a tela
             }
         });
         //-----------------------------------------------------------------------------------------------------------------------------------
@@ -77,7 +77,7 @@ public class NewItemActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){ //3 parametros, 1° é qual a chamada de startactivityforresult a resposta se refere, 2°cod que fala se a activity retornou com sucesso e 3° dados retornados da activity
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == PHOTO_PICKER_REQUEST){ //Vemos se é igual a chamada
-            if (resultCode == Activity.RESULT_OK){ // Vemos se a Activity retornou verta
+            if (resultCode == Activity.RESULT_OK){ // Vemos se a Activity retornou certa
                 photoSelected = data.getData(); // pegamos o URI (endereço) da imagem
                 ImageView imvfotoPreview = findViewById(R.id.imvPhotoPreview); // pegamos o campo img
                 imvfotoPreview.setImageURI(photoSelected); // colocamos o endereço no campo imagem
