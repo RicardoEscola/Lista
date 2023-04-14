@@ -38,12 +38,14 @@ public class NewItemActivity extends AppCompatActivity {
                 startActivityForResult(photoPickerIntent,PHOTO_PICKER_REQUEST); // vai pra tela mandando a imagem e o numero identifcador
             }
         });
-        // ------------------------------------------------------------------------------------------
-        Button btnAddItem = findViewById(R.id.btnAddItem);
+        // ---------------------------------------------------------------------------------------------------------
 
-        btnAddItem.setOnClickListener(new View.OnClickListener() {
+        // Passo 09 -------------------------------------------------------------------------------------------------------------
+        Button btnAddItem = findViewById(R.id.btnAddItem); // pega o botão
+
+        btnAddItem.setOnClickListener(new View.OnClickListener() { //quando o botão for clicado
             @Override
-            // Passo 09 -------------------------------------------------------------------------------------------------------------
+
             public void onClick(View view) {
                 if(photoSelected == null){ // Analizando se os campos foram preenchidos e se caso algo esteja nulo dá uma mensagem falando oq faltou
                     Toast.makeText(NewItemActivity.this, "É necessário selecionar uma imagem!",Toast.LENGTH_LONG).show();

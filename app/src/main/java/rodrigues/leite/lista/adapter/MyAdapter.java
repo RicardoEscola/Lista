@@ -35,7 +35,7 @@ public class MyAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) { //Parametros 1° os intens criados na onCreateViewHolder e 2° qual o item deve ser usado para preencher o item
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) { //Parametros: 1° os intens criados na onCreateViewHolder e 2° qual o item deve ser usado para preencher o item
         // onBindViewHolder preenche a UI com os dados de item
 
         MyItem myItem = itens.get(position); //pegamos o item
@@ -54,6 +54,6 @@ public class MyAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return itens.size();
+        return itens.size(); // retorna a quantidade de itens na itens
     }
 }

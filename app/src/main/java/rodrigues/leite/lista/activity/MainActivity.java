@@ -20,7 +20,7 @@ import rodrigues.leite.lista.adapter.MyAdapter;
 import rodrigues.leite.lista.model.MyItem;
 
 public class MainActivity extends AppCompatActivity {
-    static int NEW_ITEM_REQUEST = 1; // Passo 7 Usado para saber qual a tela está sendo requerida
+    static int NEW_ITEM_REQUEST = 1; //Usado para saber qual a tela está sendo requerida
     MyAdapter myAdapter;
     List<MyItem> itens = new ArrayList<>();
     @Override
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Passo 12------------------------------------------------------------------------------------------------------------------------
-        RecyclerView rvItens = findViewById(R.id.rvItens);// Pegando a grid
+        RecyclerView rvItens = findViewById(R.id.rvItens);// Pegando a recyclerview
 
         myAdapter = new MyAdapter(this,itens); //Cria o myadapter
         rvItens.setAdapter(myAdapter); //seta o myadapter no recycleview
@@ -57,8 +57,9 @@ public class MainActivity extends AppCompatActivity {
     // Passo 11--------------------------------------------------------------------------------------------------------
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode,resultCode,data);
-        if(requestCode == NEW_ITEM_REQUEST){
-            if (resultCode == Activity.RESULT_OK){ // Verifica se está realmente tudo certo
+        if(requestCode == NEW_ITEM_REQUEST){ // Verifica se está realmente tudo certo
+            if (resultCode == Activity.RESULT_OK){
+
                 //Pegamos os dados de MyItem
                 MyItem myItem = new MyItem();
                 myItem.title = data.getStringExtra("title");
