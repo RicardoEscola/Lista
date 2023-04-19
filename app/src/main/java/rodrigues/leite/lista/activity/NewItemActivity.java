@@ -2,6 +2,7 @@ package rodrigues.leite.lista.activity;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import java.net.URI;
 
 import rodrigues.leite.lista.R;
+import rodrigues.leite.lista.model.NewItemActivityViewModel;
 
 public class NewItemActivity extends AppCompatActivity {
 
@@ -29,6 +31,13 @@ public class NewItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_item);
 
+        NewItemActivityViewModel vm = new ViewModelProvider(this).get(NewItemActivityViewModel.class);
+        Uri selectedPhotoLocation = vm.getSelectedPhotoLocation();
+
+        if(selectedPhotoLocation != null){
+            ImageView imvphotoPreview = findViewById(R.id.imvPhotoPreview);
+            imvphotoPreview.setImageURI(selectedPhotoLocation);
+        }
         ImageButton imgCl = findViewById(R.id.imbCl); // Pega o botão com a imagem
         imgCl.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,9 +89,13 @@ public class NewItemActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == PHOTO_PICKER_REQUEST){ //Vemos se é igual a chamada
             if (resultCode == Activity.RESULT_OK){ // Vemos se a Activity retornou certa
-                photoSelected = data.getData(); // pegamos o URI (endereço) da imagem
+                Uri photoSelected = data.getData();// pegamos o URI (endereço) da imagem
                 ImageView imvfotoPreview = findViewById(R.id.imvPhotoPreview); // pegamos o campo img
+
                 imvfotoPreview.setImageURI(photoSelected); // colocamos o endereço no campo imagem
+
+                NewItemActivityViewModel vm = new ViewModelProvider(this).get(NewItemActivityViewModel.class);
+                vm.setSelectedPhotoLocation(photoSelected);
             }
         }
     }
