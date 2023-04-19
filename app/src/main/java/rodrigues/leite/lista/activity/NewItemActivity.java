@@ -32,7 +32,7 @@ public class NewItemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_item);
 
         NewItemActivityViewModel vm = new ViewModelProvider(this).get(NewItemActivityViewModel.class);
-        Uri photoSelected = vm.getSelectedPhotoLocation();
+        photoSelected = vm.getSelectedPhotoLocation();
 
         if(photoSelected != null){
             ImageView imvphotoPreview = findViewById(R.id.imvPhotoPreview);
