@@ -32,11 +32,11 @@ public class NewItemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_item);
 
         NewItemActivityViewModel vm = new ViewModelProvider(this).get(NewItemActivityViewModel.class);
-        Uri selectedPhotoLocation = vm.getSelectedPhotoLocation();
+        Uri photoSelected = vm.getSelectedPhotoLocation();
 
-        if(selectedPhotoLocation != null){
+        if(photoSelected != null){
             ImageView imvphotoPreview = findViewById(R.id.imvPhotoPreview);
-            imvphotoPreview.setImageURI(selectedPhotoLocation);
+            imvphotoPreview.setImageURI(photoSelected);
         }
         ImageButton imgCl = findViewById(R.id.imbCl); // Pega o botão com a imagem
         imgCl.setOnClickListener(new View.OnClickListener() {
