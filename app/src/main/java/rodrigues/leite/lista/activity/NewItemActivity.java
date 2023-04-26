@@ -23,7 +23,7 @@ import rodrigues.leite.lista.model.NewItemActivityViewModel;
 public class NewItemActivity extends AppCompatActivity {
 
     static int PHOTO_PICKER_REQUEST = 1;
-    Uri photoSelected = null;
+
 
     @Override
     // Passo 8 -----------------------------------------------------------------------------------------
@@ -32,7 +32,7 @@ public class NewItemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_item);
 
         NewItemActivityViewModel vm = new ViewModelProvider(this).get(NewItemActivityViewModel.class);
-        photoSelected = vm.getSelectedPhotoLocation();
+        Uri photoSelected = vm.getSelectedPhotoLocation();
 
         if(photoSelected != null){
             ImageView imvphotoPreview = findViewById(R.id.imvPhotoPreview);
@@ -56,6 +56,7 @@ public class NewItemActivity extends AppCompatActivity {
             @Override
 
             public void onClick(View view) {
+                Uri photoSelected = vm.getSelectedPhotoLocation();
                 if(photoSelected == null){ // Analizando se os campos foram preenchidos e se caso algo esteja nulo dá uma mensagem falando oq faltou
                     Toast.makeText(NewItemActivity.this, "É necessário selecionar uma imagem!",Toast.LENGTH_LONG).show();
                     return;
